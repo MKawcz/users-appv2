@@ -6,9 +6,11 @@ import jsonData from './users.json';
 
 const App = () => {
     const { login } = useAuth();
+    //Używamy useState do zarządzania stanem użytkowników (originalUsers i users).
     const [originalUsers, setOriginalUsers] = useState([]);
     const [users, setUsers] = useState([]);
 
+    //useEffect jest używany do inicjalizacji listy użytkowników i automatycznego logowania pierwszego użytkownika.
     useEffect(() => {
         setOriginalUsers(jsonData.users);
         setUsers(jsonData.users);
@@ -16,6 +18,7 @@ const App = () => {
         login(jsonData.users[0]); // Zaloguj pierwszego użytkownika automatycznie
     }, [login]);
 
+    //AuthProvider jest używany do zapewnienia kontekstu autoryzacji dla podrzędnych komponentów.
     return (
         <AuthProvider>
             <div>

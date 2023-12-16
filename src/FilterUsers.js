@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import useFilterUsers from './useFilterUsers';
 
+//FilterUsers przyjmuje users i setUsers jako propsy. users to lista użytkowników do filtrowania, a setUsers to funkcja do aktualizacji tej listy.
 const FilterUsers = ({ users, setUsers }) => {
     const { filteredRole, setFilteredRole, filterUserByRole } = useFilterUsers();
+    //Używamy useRef do przechowywania referencji do pola wyszukiwania.
     const searchInputRef = useRef(null);
 
     const updateFilteredUsers = () => {
@@ -20,6 +22,7 @@ const FilterUsers = ({ users, setUsers }) => {
         setUsers(filteredUsers);
     };
 
+    //useEffect jest używany do automatycznego wywołania updateFilteredUsers przy zmianie roli lub listy użytkowników.
     useEffect(() => {
         updateFilteredUsers();
     }, [filteredRole, users]);
