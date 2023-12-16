@@ -1,0 +1,35 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Jan Kowalski",
+        "email": "jan.kowalski@example.com",
+        "role": "User"
+      },
+      {
+        "id": 2,
+        "name": "Anna Nowak",
+        "email": "anna.nowak@example.com",
+        "role": "Administrator"
+      },
+      {
+        "id": 3,
+        "name": "Marek Wiśniewski",
+        "email": "marek.wisniewski@example.com",
+        "role": "User"
+      },
+      {
+        "id": 4,
+        "name": "Katarzyna Dąbrowska",
+        "email": "katarzyna.dabrowska@example.com",
+        "role": "User"
+      },
+      {
+        "id": 5,
+        "name": "Piotr Jankowski",
+        "email": "piotr.jankowski@example.com",
+        "role": "Administrator"
+      }
+    ]
+  }
+  

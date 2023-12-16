@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import UserList from './UserList';
+import FilterUsers from './FilterUsers';
+import { AuthProvider, useAuth } from './AuthProvider';
+import jsonData from './users.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const { login } = useAuth();
+    const [originalUsers, setOriginalUsers] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        setOriginalUsers(jsonData.users);
+        setUsers(jsonData.users);
+        console.log(jsonData.users);
+        login(jsonData.users[0]); // Zaloguj pierwszego użytkownika automatycznie
+    }, [login]);
+
+    return (
+        <AuthProvider>
+            <div>
+                <h2>Witaj w Szuflandii!</h2>
+                <FilterUsers users={originalUsers} setUsers={setUsers} />
+                <UserList users={users} />
+            </div>
+        </AuthProvider>
+    );
+};
 
 export default App;
